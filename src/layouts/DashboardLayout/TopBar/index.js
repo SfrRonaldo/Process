@@ -13,6 +13,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
+import AccountIcon from "@material-ui/icons/AccountCircleOutlined";
 import InputIcon from "@material-ui/icons/Input";
 import Logo from "../../../components/Logo/index";
 
@@ -37,13 +38,7 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         <Box flexGrow={1} />
         <Hidden mdDown>
           <IconButton color="inherit">
-            <Badge
-              badgeContent={notifications.length}
-              color="primary"
-              variant="dot"
-            >
-              <NotificationsIcon />
-            </Badge>
+            <AccountIcon />
           </IconButton>
           <IconButton color="inherit">
             <InputIcon />
