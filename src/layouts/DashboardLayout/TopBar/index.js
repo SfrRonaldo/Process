@@ -1,21 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 import {
   AppBar,
-  Badge,
   Box,
   Hidden,
   IconButton,
   Toolbar,
   makeStyles,
+  Button,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
-import AccountIcon from "@material-ui/icons/AccountCircleOutlined";
-import InputIcon from "@material-ui/icons/Input";
 import Logo from "../../../components/Logo/index";
+import {
+  Edit as EditIcon,
+  Home as HomeIcon,
+  LogOut as LogOutIcon,
+  Settings as SettingsIcon,
+  Trello as TrelloIcon,
+  User as UserIcon,
+} from "react-feather";
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -27,7 +32,6 @@ const useStyles = makeStyles(() => ({
 
 const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
-  const [notifications] = useState([]);
 
   return (
     <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
@@ -35,14 +39,29 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
         <RouterLink to="/">
           <Logo />
         </RouterLink>
+        <Hidden mdDown>
+          <Button color="inherit" size="small">
+            <EditIcon /> <span style={{ marginLeft: 5 }}>Diagrama</span>
+          </Button>
+        </Hidden>
         <Box flexGrow={1} />
         <Hidden mdDown>
-          <IconButton color="inherit">
-            <AccountIcon />
-          </IconButton>
-          <IconButton color="inherit">
-            <InputIcon />
-          </IconButton>
+          <Button color="inherit" size="small">
+            <HomeIcon /> <span style={{ marginLeft: 5 }}>Inicio</span>
+          </Button>{" "}
+          <Button color="inherit" size="small">
+            <UserIcon /> <span style={{ marginLeft: 5 }}>Perfil</span>
+          </Button>{" "}
+          <Button color="inherit" size="small">
+            <TrelloIcon /> <span style={{ marginLeft: 5 }}>Empresa</span>
+          </Button>{" "}
+          <Button color="inherit" size="small">
+            <SettingsIcon />{" "}
+            <span style={{ marginLeft: 5 }}>Configuración</span>
+          </Button>{" "}
+          <Button color="inherit" size="small" href="/">
+            <LogOutIcon /> <span style={{ marginLeft: 5 }}>Cerrar Sesión</span>
+          </Button>
         </Hidden>
         <Hidden lgUp>
           <IconButton color="inherit" onClick={onMobileNavOpen}>

@@ -30,7 +30,7 @@ export default function LoginForm() {
             password: Yup.string().max(255).required("Contraseña es requerida"),
           })}
           onSubmit={() => {
-            navigate("/app/home", { replace: true });
+            navigate("/app/inicio", { replace: true });
           }}
         >
           {({

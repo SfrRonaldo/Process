@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import {
   Avatar,
   Box,
-  Button,
   Divider,
   Drawer,
   Hidden,
@@ -13,63 +12,51 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import {
-  AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
-  Lock as LockIcon,
+  Edit as EditIcon,
+  Home as HomeIcon,
+  LogOut as LogOutIcon,
   Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
+  Trello as TrelloIcon,
   User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon,
 } from "react-feather";
 import NavItem from "./NavItem";
 
 const user = {
   avatar: "/static/logo.svg",
-  jobTitle: "Senior Developer",
-  name: "Katarina Smith",
+  jobTitle: "Supervisor",
+  name: "Ronaldo Tunque",
 };
 
 const items = [
   {
-    href: "/app/dashboard",
-    icon: BarChartIcon,
-    title: "Dashboard",
+    href: "/app/inicio",
+    icon: HomeIcon,
+    title: "Inicio",
   },
   {
-    href: "/app/customers",
-    icon: UsersIcon,
-    title: "Customers",
+    href: "/app/diagrama",
+    icon: EditIcon,
+    title: "Diagrama",
   },
   {
-    href: "/app/products",
-    icon: ShoppingBagIcon,
-    title: "Products",
-  },
-  {
-    href: "/app/account",
+    href: "/app/perfil",
     icon: UserIcon,
-    title: "Account",
+    title: "Perfil",
   },
   {
-    href: "/app/settings",
+    href: "/app/empresa",
+    icon: TrelloIcon,
+    title: "Empresa",
+  },
+  {
+    href: "/app/configuracion",
     icon: SettingsIcon,
-    title: "Settings",
+    title: "Configuración",
   },
   {
     href: "/login",
-    icon: LockIcon,
-    title: "Login",
-  },
-  {
-    href: "/register",
-    icon: UserPlusIcon,
-    title: "Register",
-  },
-  {
-    href: "/404",
-    icon: AlertCircleIcon,
-    title: "Error",
+    icon: LogOutIcon,
+    title: "Cerrar Sesión",
   },
 ];
 
@@ -117,7 +104,18 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         </Typography>
       </Box>
       <Divider />
-      <Box flexGrow={1} />
+      <Box p={2}>
+        <List>
+          {items.map((item) => (
+            <NavItem
+              href={item.href}
+              key={item.title}
+              title={item.title}
+              icon={item.icon}
+            />
+          ))}
+        </List>
+      </Box>
     </Box>
   );
 
@@ -130,16 +128,6 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           onClose={onMobileClose}
           open={openMobile}
           variant="temporary"
-        >
-          {content}
-        </Drawer>
-      </Hidden>
-      <Hidden mdDown>
-        <Drawer
-          anchor="left"
-          classes={{ paper: classes.desktopDrawer }}
-          open
-          variant="persistent"
         >
           {content}
         </Drawer>

@@ -11,7 +11,11 @@ const routes = [
     path: "app",
     element: <DashboardLayout />,
     children: [
-      { path: "home", element: <Home /> },
+      { path: "inicio", element: <Home /> },
+      { path: "perfil", element: <Home /> },
+      { path: "diagrama", element: <Home /> },
+      { path: "configuracion", element: <Home /> },
+      { path: "empresa", element: <Home /> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },
